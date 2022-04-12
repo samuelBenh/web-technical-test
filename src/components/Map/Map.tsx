@@ -13,7 +13,7 @@ const center = {
 
 const Map: React.FC = () => (
   <LoadScript
-    googleMapsApiKey="Google Maps API key"
+    googleMapsApiKey="Your Google API key here"
   >
     <GoogleMap
       mapContainerStyle={containerStyle}
