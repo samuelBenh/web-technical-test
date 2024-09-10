@@ -1,5 +1,13 @@
 # Web Technical Test
 
+You will build a tiny Yego Web app with React and ViteJS. The objective will be to test your technical skills and knowledge of this language and followings stack. You will be evaluated on the code structure and graphical structure of your application. The goal is to have a complete overview of your skills.
+
+**Please, try to aim for a minimum of 2 hours of work. We are not looking for a perfect solution, but a good one that is scalable.**
+
+Feel free to ask me questions if needed, by email at <erwan.leprado@rideyego.com>
+
+Good luck and have fun! :)
+
 ## Introduction
 
 This is a simple web application that allows you to test your web application.
@@ -19,16 +27,8 @@ The stack we are aiming to use is:
 - Typescript
 - Mapbox
 - Tailwind
-- Zod
 
 **You are not required to use these technologies, but we recommend you to use them.**
-
-## How to connect to the WS backend
-
-The WS engine is based on Socket IO.
-
-The backend will be simulated by a bun script that will send an initial payload and updates.
-It is allowed to use the type definition of the backend directly in the frontend (exposed by TS or zod).
 
 ## Installation
 
@@ -40,7 +40,7 @@ bun install
 
 ```bash
 cd packages/web-app
-bun start
+bun dev
 ```
 
 ## Usage of backend
@@ -49,3 +49,38 @@ bun start
 cd packages/ws-backend
 bun start
 ```
+
+## How to connect to the WS backend
+
+The WS engine is based on Socket IO.
+
+The backend will be simulated by a bun script that will send an initial payload and updates.
+It is allowed to use the type definition of the backend directly in the frontend (exposed by TS or zod).
+
+## Subject
+
+The design should follow the guidelines provided in the linked figma file (cf Specifications).
+
+You must display our scooters on a map using any map provider, represented by markers.
+
+Display an orange marker if the scooter status is available,
+Display a black marker if the scooter status is booked,
+Display a red marker if the scooter status is maintenance,
+DO NOT display a marker if the scooter status is disabled.
+
+The system should be able to let the user select a scooter and display the information of the scooter.
+The system should be able to let the user select a scooter and update the information of the scooter.
+
+## Specifications
+
+### Assets
+
+Assets provided in `packages/web-app/assets/images`.
+
+### Mapbox API
+
+API Key is provided in the email.
+
+### Figma
+
+Figma file available in the email.
