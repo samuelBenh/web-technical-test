@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+# Web Technical Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You will build a tiny Yego Web app with React and ViteJS. The objective will be to test your technical skills and knowledge of this language and followings stack. You will be evaluated on the code structure and graphical structure of your application. The goal is to have a complete overview of your skills.
 
-## Available Scripts
+**Please, try to aim for a minimum of 2 hours of work. We are not looking for a perfect solution, but a good one that is scalable.**
 
-In the project directory, you can run:
+Feel free to ask me questions if needed, by email at <erwan.leprado@rideyego.com>
 
-### `yarn start`
+Good luck and have fun! :)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Introduction
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This is a simple web application that allows you to test your web application.
+The goal is to test is to introduce to us a mini dashboard of vehicles.
 
-### `yarn test`
+The features are simple:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Connect to the WS backend,
+- Display the vehicles according to the types or status,
+- and follow the design of the application.
 
-### `yarn build`
+The stack we are aiming to use is:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Bun
+- React
+- Socket IO
+- Typescript
+- Mapbox
+- Tailwind
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**You are not required to use these technologies, but we recommend you to use them.**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `yarn eject`
+```bash
+bun install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usage of web app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd packages/web-app
+bun dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Usage of backend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+cd packages/ws-backend
+bun start
+```
 
-## Learn More
+## How to connect to the WS backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The WS engine is based on Socket IO.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The backend will be simulated by a bun script that will send an initial payload and updates.
+It is allowed to use the type definition of the backend directly in the frontend (exposed by TS or zod).
+
+## Subject
+
+The design should follow the guidelines provided in the linked figma file (cf Specifications).
+
+You must display our scooters on a map using any map provider, represented by markers.
+
+Display an orange marker if the scooter status is available,
+Display a black marker if the scooter status is booked,
+Display a red marker if the scooter status is maintenance,
+DO NOT display a marker if the scooter status is disabled.
+
+The system should be able to let the user select a scooter and display the information of the scooter.
+The system should be able to let the user select a scooter and update the information of the scooter.
+
+## Specifications
+
+### Assets
+
+Assets provided in `packages/web-app/assets/images`.
+
+### Mapbox API
+
+API Key is provided in the email.
+
+### Figma
+
+Figma file available in the email.
