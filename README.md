@@ -59,17 +59,19 @@ It is allowed to use the type definition of the backend directly in the frontend
 
 ## Subject
 
-The design should follow the guidelines provided in the linked figma file (cf Specifications).
+Please find what we are going to review in your project :
 
-You must display our scooters on a map using any map provider, represented by markers.
+- The design should follow the guidelines provided in the linked figma file (cf Specifications).
 
-Display an orange marker if the scooter status is available,
-Display a black marker if the scooter status is booked,
-Display a red marker if the scooter status is maintenance,
-DO NOT display a marker if the scooter status is disabled.
+- You must display our scooters on a map using any map provider, represented by markers.
 
-The system should be able to let the user select a scooter and display the information of the scooter.
-The system should be able to let the user select a scooter and update the information of the scooter.
+- Display an orange marker if the scooter status is available,
+- Display a black marker if the scooter status is booked,
+- Display a red marker if the scooter status is maintenance,
+- DO NOT display a marker if the scooter status is disabled.
+
+- The system should be able to let the user select a scooter and display the information of the scooter.
+- The system should be able to let the user select a scooter and update the information of the scooter.
 
 ## Specifications
 
