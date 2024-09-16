@@ -5,7 +5,7 @@ import { generateVehiclePlateNumber, getRandomPosition, getRandomStatus } from "
  * Generates random vehicles to simulate a real world scenario.
  * Serves as a mock database.
  */
-export const vehicles: Vehicle[] = Array(350).fill(null).map((_, index) => {
+export const vehicles: Vehicle[] = Array(1000).fill(null).map((_, index) => {
   const position = getRandomPosition();
 
   return {
