@@ -11,7 +11,7 @@ Good luck and have fun! :)
 ## Introduction
 
 This is a simple web application that allows you to test your web application.
-The goal is to test is to introduce to us a mini dashboard of vehicles.
+The goal is to create a mini dashboard of vehicles.
 
 The features are simple:
 
