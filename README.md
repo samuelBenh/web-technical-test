@@ -62,6 +62,7 @@ It is allowed to use the type definition of the backend directly in the frontend
 Please find what we are going to review in your project :
 
 - The design should follow the guidelines provided in the linked figma file (cf Specifications).
+- You have to handle connection and update from WS to an internal state.
 - You must display our scooters on a map using any map provider, represented by markers.
 - Display an orange marker if the scooter status is available.
 - Display a black marker if the scooter status is booked.
