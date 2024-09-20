@@ -5,6 +5,7 @@ export const statusVehiclesSchema = z.enum(['AVAILABLE', 'BOOKED', 'MAINTENANCE'
 export const vehicleSchema = z.object({
   id: z.number(),
   plate_number: z.string(),
+  name: z.string(),
   lat: z.number(),
   lng: z.number(),
   battery: z.number(),

@@ -1,6 +1,4 @@
-import { randomPosition } from "@turf/turf";
 import type { Vehicle } from "../types/vehicle";
-import { barcelonaBBox } from "./position";
 
 /**
  * Generate a random vehicle plate number
@@ -25,4 +23,20 @@ export const getRandomStatus = (): Vehicle['status'] => {
   return 'BOOKED';
 }
 
-export const getRandomPosition = () => randomPosition(barcelonaBBox);
+export const generateBatteryLevel = (previousBatteryLevel?: number) => {
+  if (previousBatteryLevel) {
+    const battery = previousBatteryLevel + (Math.random() * 5 * (Math.random() < 0.5 ? -1 : 1));
+
+    if (battery < 0) {
+      return 0;
+    }
+
+    if (battery > 100) {
+      return 100;
+    }
+
+    return battery;
+  }
+
+  return Math.random() * 100;
+};

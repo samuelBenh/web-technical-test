@@ -1,7 +1,10 @@
 import { Server } from 'socket.io';
 import type { ClientToServerEvents, ServerToClientEvents } from './types/socket';
-import { getRandomPosition, getRandomStatus } from './libs/vehicle';
+import { generateBatteryLevel, getRandomStatus } from './libs/vehicle';
 import { getAllVehicles, updateVehicle } from './services/vehicles';
+import { getRandomPosition } from './libs/position';
+
+console.log('Starting server...');
 
 const server = new Server<ClientToServerEvents, ServerToClientEvents>({
   cors: {
@@ -25,17 +28,39 @@ server.on('connection', (socket) => {
   setInterval(() => {
     const vehicle = getAllVehicles().at(Math.floor(Math.random() * getAllVehicles().length));
 
+    let updated = false;
+
     if (vehicle) {
-      const position = getRandomPosition();
+      // Update the position of the vehicle in 15% of the cases.
+      if (Math.random() >= 0.85) {
+        const position = getRandomPosition();
 
-      vehicle.lat = position[1];
-      vehicle.lng = position[0];
-      vehicle.status = getRandomStatus();
-      vehicle.battery = Math.random() * 100;
+        vehicle.lat = position[1];
+        vehicle.lng = position[0];
 
-      socket.emit('vehicle', vehicle);
+        updated = true;
+      }
+
+      // Update the status of the vehicle in 50% of the cases.
+      if (Math.random() >= 0.5) {
+        vehicle.status = getRandomStatus();
+
+        updated = true;
+      }
+
+      // Update the battery of the vehicle in 70% of the cases.
+      if (Math.random() >= 0.3) {
+        console.log('Updating battery', vehicle.battery, generateBatteryLevel(vehicle.battery));
+        vehicle.battery = generateBatteryLevel(vehicle.battery);
+
+        updated = true;
+      }
+
+      if (updated) {
+        socket.emit('vehicle', vehicle);
+      }
     }
-  }, 150);
+  }, 100);
 
   socket.on('disconnect', () => {
     console.log('A client disconnected');
@@ -43,3 +68,5 @@ server.on('connection', (socket) => {
 });
 
 server.listen(3000);
+
+console.log('Server started!');

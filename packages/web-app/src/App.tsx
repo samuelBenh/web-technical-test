@@ -8,16 +8,30 @@ function App() {
     autoConnect: false,
   }) as Socket<ServerToClientEvents, ClientToServerEvents>);
 
-  const [counter, setCounter] = useState(0);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
   useEffect(() => {
     const socket = socketClient.current;
 
     socket?.on('vehicle', (vehicle) => {
-      // Update the state
-      setCounter((prevCount) => prevCount + 1);
-      console.log(vehicle);
+      // Feel free to change the data structure to fit your needs.
+      setVehicles((prevVehicles) => {
+        const vehicleIndex = prevVehicles.findIndex((v) => v.id === vehicle.id);
+
+        if (vehicleIndex !== -1) {
+          return [
+            ...prevVehicles.slice(0, vehicleIndex),
+            vehicle,
+            ...prevVehicles.slice(vehicleIndex + 1),
+          ];
+        }
+
+        return [
+          ...prevVehicles,
+          vehicle,
+        ];
+      });
+
     });
 
     socket?.on('vehicles', (vehicles) => {
@@ -34,10 +48,9 @@ function App() {
 
   return <div>
     <h1>Yego Tiny</h1>
-    <p>Updates received: {counter}</p>
     <ul>
       {vehicles.map((vehicle) => (
-        <li key={vehicle.id}>{vehicle.plate_number}</li>
+        <li key={vehicle.id}>{vehicle.name + ' (' + vehicle.plate_number + ')' + ' - ' + vehicle.battery + '%'}</li>
       ))}
     </ul>
   </div>

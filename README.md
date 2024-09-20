@@ -27,6 +27,7 @@ The stack we are aiming to use is:
 - Typescript
 - Mapbox
 - Tailwind
+- TurfJS
 
 **You are not required to use these technologies, but we recommend you to use them.**
 
@@ -62,19 +63,24 @@ It is allowed to use the type definition of the backend directly in the frontend
 Please find what we are going to review in your project :
 
 - The design should follow the guidelines provided in the linked figma file (cf Specifications).
-- You have to handle connection and update from WS to an internal state.
-- You must display our scooters on a map using any map provider, represented by markers.
-- Display an orange marker if the scooter status is available.
-- Display a black marker if the scooter status is booked.
-- Display a red marker if the scooter status is maintenance.
-- DO NOT display a marker if the scooter status is disabled.
-- The system should be able to let the user select a scooter and display the information of the scooter.
+- The app should display our scooters on a map using any map provider, represented by markers.
+- The app should handle connection and update from WS to an internal state,
+- The app should display an orange marker if the scooter status is available,
+- The app should display a black marker if the scooter status is booked,
+- The app should display a red marker if the scooter status is maintenance,
+- The app should NOT display a marker if the scooter status is disabled,
+- The app should be able to let the user select a scooter and display the information of the scooter.
+
+### Bonus
+
+- The app should display the zone on the map provided in `./assets/zones/barcelona.json`.
+- The app should display a responsive design following the guidelines provided in the Figma.
 
 ## Specifications
 
 ### Assets
 
-Assets provided in `packages/web-app/assets/images`.
+Assets provided in the Figma (see below).
 
 ### Mapbox API
 
