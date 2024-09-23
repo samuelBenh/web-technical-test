@@ -70,11 +70,12 @@ Please find what we are going to review in your project :
 - The app should display a red marker if the scooter status is maintenance,
 - The app should NOT display a marker if the scooter status is disabled,
 - The app should be able to let the user select a scooter and display the information of the scooter.
+- The app should display a responsive design following the guidelines provided in the Figma.
 
 ### Bonus
 
+- The app should display an search input to find by name OR plate the scooter.
 - The app should display the zone on the map provided in `./assets/zones/barcelona.json`.
-- The app should display a responsive design following the guidelines provided in the Figma.
 
 ## Specifications
 
