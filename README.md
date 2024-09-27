@@ -4,6 +4,8 @@ You will build a tiny Yego Web app with React and ViteJS. The objective will be 
 
 **Please, try to aim for a maximum of 3 hours of work. We are not looking for a perfect solution, but a good one that is scalable, and surely we will have time to discuss it.**
 
+| Please fork this repository and give back your fork link. This repository is for read-only purpose.
+
 Feel free to ask me questions if needed, by email at <erwan.leprado@rideyego.com>
 
 Good luck and have fun! :)
