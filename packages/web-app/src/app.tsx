@@ -7,6 +7,7 @@ import {
 import { Vehicle } from "ws-backend/types/vehicle";
 import Header from "./components/Header";
 import MapComponent from "../src/components/Map";
+import VehiculeDetails from "./components/VehiculeDetails";
 
 function App() {
   const socketClient = useRef(
@@ -50,9 +51,10 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-slate-200 h-screen">
+    <div className="bg-slate-200 z-10 h-screen">
       <Header />
       <MapComponent vehicles={vehicles} />
+      <VehiculeDetails />
     </div>
   );
 }

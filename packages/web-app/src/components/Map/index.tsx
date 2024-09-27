@@ -13,7 +13,7 @@ const MapComponent = ({ vehicles }: MapComponentProps) => {
   const map = useRef<MapRef | null>(null);
 
   return (
-    <div className="absolute top-0 w-full h-full">
+    <div className="absolute z-2 top-0 w-full h-full">
       <Map
         ref={map}
         initialViewState={{
