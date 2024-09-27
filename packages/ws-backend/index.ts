@@ -1,23 +1,26 @@
-import { Server } from 'socket.io';
-import type { ClientToServerEvents, ServerToClientEvents } from './types/socket';
-import { generateBatteryLevel, getRandomStatus } from './libs/vehicle';
-import { getAllVehicles, updateVehicle } from './services/vehicles';
-import { getRandomPosition } from './libs/position';
+import { Server } from "socket.io";
+import type {
+  ClientToServerEvents,
+  ServerToClientEvents,
+} from "./types/socket";
+import { generateBatteryLevel, getRandomStatus } from "./libs/vehicle";
+import { getAllVehicles, updateVehicle } from "./services/vehicles";
+import { getRandomPosition } from "./libs/position";
 
-console.log('Starting server...');
+console.log("Starting server...");
 
 const server = new Server<ClientToServerEvents, ServerToClientEvents>({
   cors: {
-    origin: 'http://localhost:5173',
-  }
+    origin: "http://127.0.0.1:5173",
+  },
 });
 
-server.on('connection', (socket) => {
-  console.log('A client connected');
+server.on("connection", (socket) => {
+  console.log("A client connected");
 
-  socket.emit('vehicles', getAllVehicles());
+  socket.emit("vehicles", getAllVehicles());
 
-  socket.on('vehicle', (vehicle) => {
+  socket.on("vehicle", (vehicle) => {
     updateVehicle(vehicle.id, vehicle);
   });
 
@@ -26,7 +29,9 @@ server.on('connection', (socket) => {
    * It will update atrtibutes except the id and plate_number.
    */
   setInterval(() => {
-    const vehicle = getAllVehicles().at(Math.floor(Math.random() * getAllVehicles().length));
+    const vehicle = getAllVehicles().at(
+      Math.floor(Math.random() * getAllVehicles().length)
+    );
 
     let updated = false;
 
@@ -50,23 +55,27 @@ server.on('connection', (socket) => {
 
       // Update the battery of the vehicle in 70% of the cases.
       if (Math.random() >= 0.3) {
-        console.log('Updating battery', vehicle.battery, generateBatteryLevel(vehicle.battery));
+        console.log(
+          "Updating battery",
+          vehicle.battery,
+          generateBatteryLevel(vehicle.battery)
+        );
         vehicle.battery = generateBatteryLevel(vehicle.battery);
 
         updated = true;
       }
 
       if (updated) {
-        socket.emit('vehicle', vehicle);
+        socket.emit("vehicle", vehicle);
       }
     }
   }, 100);
 
-  socket.on('disconnect', () => {
-    console.log('A client disconnected');
+  socket.on("disconnect", () => {
+    console.log("A client disconnected");
   });
 });
 
 server.listen(3000);
 
-console.log('Server started!');
+console.log("Server started!");
