@@ -7,9 +7,10 @@ import MarkerMap from "./MarkerMap";
 const MAPBOX_TOKEN = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN;
 interface MapComponentProps {
   vehicles: Vehicle[];
+  setVehicleSelected: (vehicle: Vehicle) => void;
 }
 
-const MapComponent = ({ vehicles }: MapComponentProps) => {
+const MapComponent = ({ vehicles, setVehicleSelected }: MapComponentProps) => {
   const map = useRef<MapRef | null>(null);
 
   return (
@@ -24,7 +25,7 @@ const MapComponent = ({ vehicles }: MapComponentProps) => {
         mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
-        {vehicles.slice(0, 10).map((vehicle) => {
+        {vehicles.slice(0, 30).map((vehicle) => {
           return (
             <Marker
               key={vehicle.id}
@@ -32,7 +33,10 @@ const MapComponent = ({ vehicles }: MapComponentProps) => {
               latitude={vehicle.lat}
               anchor="bottom"
             >
-              <MarkerMap vehicle={vehicle} />
+              <MarkerMap
+                setVehicleSelected={setVehicleSelected}
+                vehicle={vehicle}
+              />
             </Marker>
           );
         })}

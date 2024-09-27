@@ -7,9 +7,11 @@ import {
 import { Vehicle } from "ws-backend/types/vehicle";
 import Header from "./components/Header";
 import MapComponent from "../src/components/Map";
-import VehiculeDetails from "./components/VehiculeDetails";
+import VehicleDetails from "./components/VehicleDetails";
 
 function App() {
+  const [vehicleSelected, setVehicleSelected] = useState<Vehicle | null>(null);
+
   const socketClient = useRef(
     io("http://localhost:3000", {
       autoConnect: false,
@@ -53,8 +55,11 @@ function App() {
   return (
     <div className="bg-slate-200 z-10 h-screen">
       <Header />
-      <MapComponent vehicles={vehicles} />
-      <VehiculeDetails />
+      <MapComponent
+        vehicles={vehicles}
+        setVehicleSelected={setVehicleSelected}
+      />
+      <VehicleDetails vehicle={vehicleSelected} />
     </div>
   );
 }
