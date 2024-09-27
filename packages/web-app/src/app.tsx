@@ -57,6 +57,7 @@ function App() {
       <Header />
       <MapComponent
         vehicles={vehicles}
+        vehicleSelected={vehicleSelected}
         setVehicleSelected={setVehicleSelected}
       />
       <VehicleDetails vehicle={vehicleSelected} />

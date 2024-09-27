@@ -7,10 +7,15 @@ import MarkerMap from "./MarkerMap";
 const MAPBOX_TOKEN = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN;
 interface MapComponentProps {
   vehicles: Vehicle[];
+  vehicleSelected: Vehicle | null;
   setVehicleSelected: (vehicle: Vehicle) => void;
 }
 
-const MapComponent = ({ vehicles, setVehicleSelected }: MapComponentProps) => {
+const MapComponent = ({
+  vehicles,
+  setVehicleSelected,
+  vehicleSelected,
+}: MapComponentProps) => {
   const map = useRef<MapRef | null>(null);
 
   return (
@@ -34,6 +39,7 @@ const MapComponent = ({ vehicles, setVehicleSelected }: MapComponentProps) => {
               anchor="bottom"
             >
               <MarkerMap
+                isSelected={vehicleSelected === vehicle}
                 setVehicleSelected={setVehicleSelected}
                 vehicle={vehicle}
               />
