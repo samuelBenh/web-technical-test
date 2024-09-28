@@ -53,7 +53,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-slate-200 z-10 h-screen">
+    <div className="z-10 h-screen">
       <Header vehicles={vehicles} />
       <MapComponent
         vehicles={vehicles}
