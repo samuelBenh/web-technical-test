@@ -1,5 +1,6 @@
 import { Vehicle } from "ws-backend/types/vehicle";
 import motorIcon from "../../assets/images/motor.png";
+import { VehicleStatus } from "../../types/vehicleStatus";
 
 interface MarketMapProps {
   vehicle: Vehicle;
@@ -14,16 +15,16 @@ const MarkerMap = ({
 }: MarketMapProps) => {
   const handleVehicleStatus = (property: string) => {
     switch (vehicle.status) {
-      case "BOOKED":
+      case VehicleStatus.BOOKED:
         return { [property]: "black" };
-      case "AVAILABLE":
+      case VehicleStatus.AVAILABLE:
         return { [property]: "#F7B328" };
-      case "MAINTENANCE":
+      case VehicleStatus.MAINTENANCE:
         return { [property]: "#E1485C" };
     }
   };
 
-  if (vehicle.status === "DISABLED") return null;
+  if (vehicle.status === VehicleStatus.DISABLED) return null;
 
   if (isSelected) {
     return (

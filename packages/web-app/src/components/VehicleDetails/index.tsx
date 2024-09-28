@@ -1,5 +1,7 @@
 import { Vehicle } from "ws-backend/types/vehicle";
 import scooter from "../../assets/images/scooter.png";
+import LabelStatus from "../LabelStatus";
+import { VehicleStatus } from "../../types/vehicleStatus";
 
 interface VehicleDetailsProps {
   vehicle: Vehicle | null;
@@ -7,17 +9,6 @@ interface VehicleDetailsProps {
 
 const VehicleDetails = ({ vehicle }: VehicleDetailsProps) => {
   if (!vehicle) return null;
-
-  const handleVehicleLabel = () => {
-    switch (vehicle.status) {
-      case "BOOKED":
-        return { backgroundColor: "#F2F4F7", color: "#475467" };
-      case "AVAILABLE":
-        return { backgroundColor: "#ECFDF3", color: "#17B26A" };
-      case "MAINTENANCE":
-        return { backgroundColor: "#FEF3F2", color: "#F04438" };
-    }
-  };
 
   return (
     <div className={`sm:h-auto h-full bg-transparent z-10 sm:relative`}>
@@ -30,14 +21,7 @@ const VehicleDetails = ({ vehicle }: VehicleDetailsProps) => {
                 {vehicle.name}
               </p>
               <div className="flex">
-                <div
-                  style={handleVehicleLabel()}
-                  className="rounded-full mt-1 px-2"
-                >
-                  <p className="capitalize text-center">
-                    {vehicle.status.toLowerCase()}
-                  </p>
-                </div>
+                <LabelStatus status={vehicle.status as VehicleStatus} />
               </div>
             </div>
           </div>

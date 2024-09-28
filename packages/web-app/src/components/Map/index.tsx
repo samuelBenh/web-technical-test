@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Map, { MapRef, Marker } from "react-map-gl";
+import Map, { Layer, MapRef, Marker, Source } from "react-map-gl";
 import { Vehicle } from "ws-backend/types/vehicle";
+import restrictedZones from "../../assets/zones/barcelona.json";
 import MarkerMap from "./MarkerMap";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -30,6 +31,17 @@ const MapComponent = ({
         mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
+        <Source id="restricted-zones" type="geojson" data={restrictedZones}>
+          <Layer
+            id="restricted-zones"
+            type="fill"
+            source="restricted-zones"
+            paint={{
+              "fill-color": "#475467",
+              "fill-opacity": 0.3,
+            }}
+          />
+        </Source>
         {vehicles.slice(0, 30).map((vehicle) => {
           return (
             <Marker

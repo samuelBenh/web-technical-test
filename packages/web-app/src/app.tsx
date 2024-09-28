@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="bg-slate-200 z-10 h-screen">
-      <Header />
+      <Header vehicles={vehicles} />
       <MapComponent
         vehicles={vehicles}
         vehicleSelected={vehicleSelected}
